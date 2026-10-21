@@ -18,8 +18,8 @@ const Project = () => {
       description:
         'An engaging education portal designed for students to take programming quizzes, track learning progress, and practice core concepts.',
       techStack: ['Java', 'Spring Boot', 'React', 'MySQL', 'Tailwind CSS'],
-      githubLink: 'https://github.com',
-      liveLink: '#',
+      githubLink: 'https://github.com/itszaidsidd/Knowledge-Zone-an-E-Learning-Plateform',
+      liveLink: 'https://knowledge-zone-an-e-learning-platef.vercel.app/',
       category: 'EdTech Platform',
     },
     {

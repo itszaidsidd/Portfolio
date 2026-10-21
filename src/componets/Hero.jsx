@@ -47,10 +47,10 @@ const Hero = () => {
             </a>
 
             <a
-              href="#about"
+              href="/resume.pdf"
               className="px-8 py-4 bg-slate-900 hover:bg-slate-800 text-gray-300 hover:text-white font-bold text-lg rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300"
             >
-              About Me
+              Download CV
             </a>
           </div>
 

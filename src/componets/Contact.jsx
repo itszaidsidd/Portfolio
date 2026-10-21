@@ -1,256 +1,225 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+  // react-hook-form initialization
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    },
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  // Async submit handler
+  const onSubmit = async (data) => {
+    try {
+      // Web3Forms API endpoint (Free & No Backend Required)
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '248153fc-74f6-4736-8032-4723a3a9ea46', 
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        }),
+      });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic (e.g., EmailJS or backend API)
-    alert('Thank you for reaching out! Your message has been received.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+      const result = await response.json();
+
+      if (result.success) {
+        alert('Thank you for reaching out! Your message has been sent successfully.');
+        reset(); // Form inputs clear karne ke liye
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Submission Error:', error);
+      alert('Failed to send message. Please check your internet connection.');
+    }
   };
 
   return (
-    <div id="contact" className="w-full bg-slate-950 text-slate-200">
-      
+    <div id="contact" className="w-full bg-slate-50 text-slate-200">
       {/* ================= CONTACT SECTION ================= */}
-      <section id="contact" className="py-20 px-6 sm:px-12 lg:px-20 border-t border-slate-900">
+      <section className="py-20 px-6 sm:px-12 lg:px-20 border-t border-slate-200">
         <div className="max-w-7xl mx-auto">
-          
           {/* Header */}
           <div className="mb-14 text-center">
-            <span className="text-sm font-semibold tracking-widest text-violet-400 uppercase border-b-2 border-violet-500 pb-1 inline-block">
+            <span className="text-sm font-semibold tracking-widest text-violet-600 uppercase border-b-2 border-violet-600 pb-1 inline-block">
               Get In Touch
             </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-white mt-3 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tight">
               Contact Me
             </h2>
-            <p className="text-slate-400 text-base sm:text-lg mt-3 max-w-xl mx-auto">
+            <p className="text-slate-500 text-base sm:text-lg mt-3 max-w-xl mx-auto">
               Have a project in mind, a question, or want to collaborate? Feel free to reach out!
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-            
             {/* Contact Information (2 Columns) */}
             <div className="lg:col-span-2 space-y-6">
-              <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-xl">
-                <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
-                <p className="text-slate-400 leading-relaxed mb-8">
+              <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
+                <h3 className="text-2xl font-bold text-slate-900 mb-6">Let's Connect</h3>
+                <p className="text-slate-600 leading-relaxed mb-8">
                   I am open to full-time roles, freelance projects, and teaching opportunities. Drop a message or send an email directly!
                 </p>
 
                 <div className="space-y-6">
                   {/* Email */}
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-violet-600/10 border border-violet-500/30 flex items-center justify-center text-violet-400 font-bold">
+                    <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center text-violet-600 font-bold">
                       ✉
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-slate-400 uppercase">Email</p>
-                      <a href="mailto:contact@mohdzaid.dev" className="text-white font-medium hover:text-violet-400 transition-colors">
-                        contact@mohdzaid.dev
+                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Email</p>
+                      <a href="mailto:itszaidsidd@gmail.com" className="text-slate-900 font-medium hover:text-violet-600 transition-colors">
+                        itszaidsidd@gmail.com
                       </a>
                     </div>
                   </div>
 
                   {/* Location */}
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-violet-600/10 border border-violet-500/30 flex items-center justify-center text-violet-400 font-bold">
+                    <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center text-violet-600 font-bold">
                       📍
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-slate-400 uppercase">Location</p>
-                      <p className="text-white font-medium">Uttar Pradesh, India</p>
+                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Location</p>
+                      <p className="text-slate-900 font-medium">Uttar Pradesh, India</p>
                     </div>
                   </div>
 
                   {/* Availability */}
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-violet-600/10 border border-violet-500/30 flex items-center justify-center text-violet-400 font-bold">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 font-bold">
                       💼
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-slate-400 uppercase">Status</p>
-                      <p className="text-emerald-400 font-medium">Available for Hire & Projects</p>
+                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</p>
+                      <p className="text-emerald-600 font-medium">Available for Hire & Projects</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Contact Form (3 Columns) */}
-            <div className="lg:col-span-3 bg-slate-900 border border-slate-800 p-8 sm:p-10 rounded-2xl shadow-xl">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Contact Form with react-hook-form (3 Columns) */}
+            <div className="lg:col-span-3 bg-white border border-slate-200 p-8 sm:p-10 rounded-2xl shadow-sm">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name */}
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Your Name
                     </label>
                     <input
                       type="text"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
                       placeholder="John Doe"
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-violet-500 transition-colors"
+                      {...register('name', { required: 'Name is required' })}
+                      className={`w-full bg-slate-50 border ${
+                        errors.name ? 'border-red-500' : 'border-slate-200'
+                      } rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-600 transition-colors`}
                     />
+                    {errors.name && (
+                      <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+                    )}
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Your Email
                     </label>
                     <input
                       type="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
                       placeholder="john@example.com"
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-violet-500 transition-colors"
+                      {...register('email', {
+                        required: 'Email is required',
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          message: 'Invalid email address',
+                        },
+                      })}
+                      className={`w-full bg-slate-50 border ${
+                        errors.email ? 'border-red-500' : 'border-slate-200'
+                      } rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-600 transition-colors`}
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+                    )}
                   </div>
                 </div>
 
                 {/* Subject */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">
                     Subject
                   </label>
                   <input
                     type="text"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
                     placeholder="Project Inquiry / Job Opportunity"
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-violet-500 transition-colors"
+                    {...register('subject', { required: 'Subject is required' })}
+                    className={`w-full bg-slate-50 border ${
+                      errors.subject ? 'border-red-500' : 'border-slate-200'
+                    } rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-600 transition-colors`}
                   />
+                  {errors.subject && (
+                    <p className="text-red-500 text-xs mt-1">{errors.subject.message}</p>
+                  )}
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">
                     Message
                   </label>
                   <textarea
-                    name="message"
                     rows="5"
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
                     placeholder="Write your message here..."
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-violet-500 transition-colors resize-none"
+                    {...register('message', {
+                      required: 'Message is required',
+                      minLength: {
+                        value: 10,
+                        message: 'Message should be at least 10 characters long',
+                      },
+                    })}
+                    className={`w-full bg-slate-50 border ${
+                      errors.message ? 'border-red-500' : 'border-slate-200'
+                    } rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-600 transition-colors resize-none`}
                   ></textarea>
+                  {errors.message && (
+                    <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
+                  )}
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full py-4 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-xl shadow-lg shadow-violet-600/30 transition-all duration-300"
+                  disabled={isSubmitting}
+                  className="w-full py-4 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  Send Message &rarr;
+                  {isSubmitting ? 'Sending...' : 'Send Message →'}
                 </button>
               </form>
             </div>
-
           </div>
-
         </div>
       </section>
 
-      {/* ================= FOOTER SECTION ================= */}
-      <footer className="bg-slate-950 border-t border-slate-900 pt-16 pb-12 px-6 sm:px-12 lg:px-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-            
-            {/* Col 1: Brand Info */}
-            <div className="md:col-span-2 space-y-4">
-              <a href="#home" className="text-2xl font-black text-white tracking-wider uppercase">
-                MOHD ZAID<span className="text-violet-600">.</span>
-              </a>
-              <p className="text-slate-400 text-sm max-w-sm leading-relaxed">
-                Full Stack Developer & Educator building robust software solutions, backend APIs, and modern responsive frontend interfaces.
-              </p>
-              
-              {/* Resume Download CTA */}
-              <div className="pt-2">
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-violet-400 border border-slate-800 hover:border-violet-500/50 text-sm font-semibold rounded-lg transition-all"
-                >
-                  📄 Download Resume
-                </a>
-              </div>
-            </div>
-
-            {/* Col 2: Quick Links */}
-            <div>
-              <h4 className="text-white font-bold text-base mb-4 uppercase tracking-wider">
-                Quick Links
-              </h4>
-              <ul className="space-y-2 text-sm text-slate-400">
-                <li><a href="#home" className="hover:text-violet-400 transition-colors">Home</a></li>
-                <li><a href="#about" className="hover:text-violet-400 transition-colors">About Me</a></li>
-                <li><a href="#projects" className="hover:text-violet-400 transition-colors">Projects</a></li>
-                <li><a href="#contact" className="hover:text-violet-400 transition-colors">Contact</a></li>
-              </ul>
-            </div>
-
-            {/* Col 3: Social Links */}
-            <div>
-              <h4 className="text-white font-bold text-base mb-4 uppercase tracking-wider">
-                Social Links
-              </h4>
-              <ul className="space-y-2 text-sm text-slate-400">
-                <li>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-violet-400 transition-colors flex items-center gap-2">
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-violet-400 transition-colors flex items-center gap-2">
-                    LinkedIn
-                  </a>
-                </li>
-                <li>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-violet-400 transition-colors flex items-center gap-2">
-                    Instagram
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-          </div>
-
-          <hr className="border-slate-900 my-8" />
-
-          {/* Bottom Footer Credit */}
-          <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-            <p>© {new Date().getFullYear()} Mohd Zaid. All rights reserved.</p>
-            <p className="flex items-center gap-1">
-              Crafted with <span className="text-violet-500">React</span> & <span className="text-violet-500">Tailwind CSS</span>
-            </p>
-          </div>
-
-        </div>
-      </footer>
-
+     
     </div>
   );
 };
