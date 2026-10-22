@@ -49,7 +49,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-violet-400 transition-colors flex items-center gap-2">
+                  <a href="linkedin.com/in/mohd-zaid-454231326" target="_blank" rel="noopener noreferrer" className="hover:text-violet-400 transition-colors flex items-center gap-2">
                     LinkedIn
                   </a>
                 </li>
