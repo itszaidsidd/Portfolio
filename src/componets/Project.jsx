@@ -12,16 +12,16 @@ const Project = () => {
       liveLink: 'https://knowledge-zone-an-e-learning-platef.vercel.app/',
       category: 'EdTech Platform',
     },
-    {
-      id: 2,
-      title: 'Police Case Management System',
-      description:
-        'A comprehensive platform built to digitize case records, manage investigation workflows, and maintain structured records for law enforcement administration.',
-      techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
-      githubLink: 'https://github.com',
-      liveLink: '#',
-      category: 'Full Stack Web App',
-    },
+    // {
+    //   id: 2,
+    //   title: 'Police Case Management System',
+    //   description:
+    //     'A comprehensive platform built to digitize case records, manage investigation workflows, and maintain structured records for law enforcement administration.',
+    //   techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+    //   githubLink: 'https://github.com',
+    //   liveLink: '#',
+    //   category: 'Full Stack Web App',
+    // },
     {
       id: 3,
       title: 'Developer Portfolio & Resource Hub',
@@ -32,12 +32,40 @@ const Project = () => {
       liveLink: '#',
       category: 'Frontend Project',
     },
+    {
+      id: 4,
+      title: 'Online Book Store',
+      description:
+        'An academic web platform enabling student registration, secure login, and personalized book ordering capabilities with interactive catalog browsing and digital PDF download functionality.',
+      techStack: ['Java', 'JSP', 'JavaScript', 'HTML', 'CSS'],
+      githubLink: 'https://github.com/itszaidsidd/onlinebookstore',
+      liveLink: '#',
+      category: 'Academic Project',
+    },
+    {
+      id: 5, 
+      title: 'Real-Time Chatting Application',
+      description:
+        'A desktop-based real-time peer-to-peer chatting application built using Java Swing for the graphical user interface and Java Sockets for bi-directional socket communication between Server and Client.',
+      techStack: ['Java', 'Java Swing', 'Socket Programming', 'AWT'],
+      githubLink: 'https://github.com/itszaidsidd/Chatting-Application',
+      category: 'Desktop Application',
+    },
+    {
+      id: 6, 
+      title: 'Desktop Notepad Application',
+      description:
+        'A feature-rich desktop text editor built using Java Swing and AWT, supporting file operations (New, Open, Save, Print), text manipulation (Cut, Copy, Paste), custom styling, and keyboard shortcuts.',
+      techStack: ['Java', 'Java Swing', 'AWT', 'IO Streams', 'File Chooser'],
+      githubLink: 'https://github.com/itszaidsidd/Notepad',
+      category: 'Desktop Application',
+    },
   ];
 
   return (
     <section id="projects" className="w-full bg-slate-950 text-slate-100 py-20 px-6 sm:px-12 lg:px-20 border-t border-slate-900">
       <div className="max-w-7xl mx-auto">
-        
+
         <div className="mb-14 text-center md:text-left">
           <span className="text-sm font-semibold tracking-widest text-violet-400 uppercase border-b-2 border-violet-500 pb-1 inline-block">
             My Work
@@ -70,7 +98,7 @@ const Project = () => {
                   <span className="text-xs font-bold text-violet-400 uppercase tracking-wider">
                     {project.category}
                   </span>
-                  
+
                   <h3 className="text-2xl font-bold text-white mt-1 group-hover:text-violet-300 transition-colors">
                     {project.title}
                   </h3>
@@ -101,15 +129,15 @@ const Project = () => {
                 >
                   GitHub
                 </a>
-                {project.id !=2 &&
-                <a
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 bg-violet-600 hover:bg-violet-700 text-white font-semibold text-sm rounded-lg transition-colors flex items-center gap-2"
-                >
-                  Live Demo &rarr;
-                </a>
+                {(project.id == 1 || project.id == 3) &&
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2.5 bg-violet-600 hover:bg-violet-700 text-white font-semibold text-sm rounded-lg transition-colors flex items-center gap-2"
+                  >
+                    Live Demo &rarr;
+                  </a>
                 }
               </div>
 
