@@ -2,6 +2,8 @@
 
 A modern, responsive, and high-performance personal portfolio website built with **React**, **Tailwind CSS**, and **React Hook Form**. This portfolio showcases my projects, technical skills, background, and contact details with seamless email delivery via **Web3Forms**.
 
+**Live Application:** [https://itszaidsidd.vercel.app](https://itszaidsidd.vercel.app)  
+
 ---
 
 ## 🌟 Features
