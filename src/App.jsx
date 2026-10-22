@@ -1,4 +1,3 @@
-import './App.css'
 import About from './componets/About'
 import Contact from './componets/Contact'
 import Footer from './componets/Footer'

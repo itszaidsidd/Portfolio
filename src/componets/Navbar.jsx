@@ -11,7 +11,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav id="home" className="w-full bg-slate-950 text-slate-300 border-b border-slate-800/80 sticky top-0 z-50 backdrop-blur-md bg-slate-950/90">
+    <nav className="w-full bg-slate-950 text-slate-300 border-b border-slate-800/80 sticky top-0 z-50 backdrop-blur-md bg-slate-950/90">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 h-20 flex items-center justify-between">
         
         <a 

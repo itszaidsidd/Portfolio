@@ -3,11 +3,9 @@ import React from 'react'
 const Footer = () => {
   return (
     <div>
-       {/* ================= FOOTER SECTION ================= */}
       <footer className="bg-slate-950 border-t border-slate-900 pt-16 pb-12 px-6 sm:px-12 lg:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-            {/* Col 1: Brand Info */}
             <div className="md:col-span-2 space-y-4">
               <a href="#home" className="text-2xl font-black text-white tracking-wider uppercase">
                 MOHD ZAID<span className="text-violet-600">.</span>
@@ -16,7 +14,6 @@ const Footer = () => {
                 Full Stack Developer & Educator building robust software solutions, backend APIs, and modern responsive frontend interfaces.
               </p>
 
-              {/* Resume Download CTA */}
               <div className="pt-2">
                 <a
                   href="/resume.pdf"
@@ -29,7 +26,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Col 2: Quick Links */}
             <div>
               <h4 className="text-white font-bold text-base mb-4 uppercase tracking-wider">
                 Quick Links
@@ -42,7 +38,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Col 3: Social Links */}
             <div>
               <h4 className="text-white font-bold text-base mb-4 uppercase tracking-wider">
                 Social Links
@@ -69,7 +64,6 @@ const Footer = () => {
 
           <hr className="border-slate-900 my-8" />
 
-          {/* Bottom Footer Credit */}
           <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
             <p>© {new Date().getFullYear()} Mohd Zaid. All rights reserved.</p>
             <p className="flex items-center gap-1">

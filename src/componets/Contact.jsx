@@ -2,7 +2,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const Contact = () => {
-  // react-hook-form initialization
   const {
     register,
     handleSubmit,
@@ -17,10 +16,8 @@ const Contact = () => {
     },
   });
 
-  // Async submit handler
   const onSubmit = async (data) => {
     try {
-      // Web3Forms API endpoint (Free & No Backend Required)
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -40,7 +37,7 @@ const Contact = () => {
 
       if (result.success) {
         alert('Thank you for reaching out! Your message has been sent successfully.');
-        reset(); // Form inputs clear karne ke liye
+        reset(); 
       } else {
         alert('Something went wrong. Please try again.');
       }
@@ -52,10 +49,8 @@ const Contact = () => {
 
   return (
     <div id="contact" className="w-full bg-slate-50 text-slate-200">
-      {/* ================= CONTACT SECTION ================= */}
       <section className="py-20 px-6 sm:px-12 lg:px-20 border-t border-slate-200">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
           <div className="mb-14 text-center">
             <span className="text-sm font-semibold tracking-widest text-violet-600 uppercase border-b-2 border-violet-600 pb-1 inline-block">
               Get In Touch
@@ -69,7 +64,6 @@ const Contact = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-            {/* Contact Information (2 Columns) */}
             <div className="lg:col-span-2 space-y-6">
               <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
                 <h3 className="text-2xl font-bold text-slate-900 mb-6">Let's Connect</h3>
@@ -78,7 +72,6 @@ const Contact = () => {
                 </p>
 
                 <div className="space-y-6">
-                  {/* Email */}
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center text-violet-600 font-bold">
                       ✉
@@ -91,7 +84,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Location */}
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center text-violet-600 font-bold">
                       📍
@@ -102,7 +94,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Availability */}
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 font-bold">
                       💼
@@ -116,11 +107,9 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Form with react-hook-form (3 Columns) */}
             <div className="lg:col-span-3 bg-white border border-slate-200 p-8 sm:p-10 rounded-2xl shadow-sm">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {/* Name */}
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Your Name
@@ -138,7 +127,6 @@ const Contact = () => {
                     )}
                   </div>
 
-                  {/* Email */}
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Your Email
@@ -163,7 +151,6 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* Subject */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">
                     Subject
@@ -181,7 +168,6 @@ const Contact = () => {
                   )}
                 </div>
 
-                {/* Message */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">
                     Message
@@ -205,7 +191,6 @@ const Contact = () => {
                   )}
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
