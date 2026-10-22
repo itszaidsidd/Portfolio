@@ -1,7 +1,5 @@
 import React from 'react';
-// import photo from "../assets/photo2.jpeg"
-import photo from "../assets/photo2_.png"
-// import photo from "../assets/photo1.png"
+import photo from "../assets/pic2.png"
 
 const About = () => {
   const languages = ['Java', 'Python', 'C', 'C++', 'JavaScript'];
