@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Footer = () => {
-  return (
+  return ( 
     <div>
       <footer className="bg-slate-950 border-t border-slate-900 pt-16 pb-12 px-6 sm:px-12 lg:px-20">
         <div className="max-w-7xl mx-auto">
